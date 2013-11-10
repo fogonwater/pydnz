@@ -12,7 +12,7 @@ Depends on the [Requests package](http://www.python-requests.org/en/latest/).
 
 ####Getting started
 
-There is no installer for this script yet. In the meantime, simply drop the pyDnz.py script into a directory with your project. 
+There is no installer for this script yet. In the meantime, simply drop the pydnz.py script into a directory with your project. 
 
 Then start a python interpreter and type:
 
@@ -22,11 +22,11 @@ Then create the dnz object with your [DigitalNZ API key](http://digitalnz.org/ap
 
 `>>> dnz = Dnz('YOUR_API_KEY')` 
 
-Now, create your first search
+Now, create your first search. Let's look for items that mention kiwis and tuis.
 
 `>>> result = dnz.search('kiwi tui')`
 
-Matching rcords returned are in _result.records_ as a dictionary of values. Let's take a look. First import the standard pretty printer.
+Matching records returned are in _result.records_ as a dictionary of values. Let's take a look. First import the standard pretty printer to get a sense of the response structure.
 
 `>>> import pprint.pprint as pp`
 
@@ -51,7 +51,7 @@ Sometimes you only want to see certain fields in your result. Feed a list of fie
 You can also so more or fewer results using the _per_page_ parameter (maximum value of 100) and paginate through with the _page_ paramater.
 
 ```
->>> result = dnz.search('kiwi tui', fields=['id', 'title', 'collection', 'content_partner'], per_page=50, page=10)
+>>> result = dnz.search('kiwi tui', per_page=50, page=10, fields=['id', 'title', 'collection', 'content_partner'])
 >>> pp(result.records)
 ```
 

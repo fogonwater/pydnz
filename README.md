@@ -71,7 +71,7 @@ You can also increase the number of facets returned (up to a maximum of 150) wit
 ```
 
 #### Sort
-Pass a sortable field along with the _sort_ field and a _direction_ to order the result set. Sortable fields are '_category_', '_content_partner_', '_date_', '_syndication_date_', '_title_'. Directions can be '_asc_' or '_desc_'.
+Pass a sortable field along with the _sort_ field and a _direction_ to order the result set. Sortable fields are _'category'_, _'content_partner'_, _'date'_, _'syndication_date'_, _'title'_. Directions can be _'asc'_ or _'desc'_.
 
 ```
 result = dnz.search('penguin', sort='date', direction='desc', fields=['title', 'date'])

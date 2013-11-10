@@ -12,9 +12,9 @@ Depends on the [Requests package](http://www.python-requests.org/en/latest/).
 
 ####Getting started
 
-There is no installer for this script yet. In the meantime, simply drop the pydnz.py script into a directory with your project. 
+There is no installer for this script yet. In the meantime, simply drop the _pydnz.py_ script into a directory with your project. 
 
-Then start a python interpreter and type:
+Start a python interpreter and type:
 
 `>>> from pydnz import Dnz`
 
@@ -34,7 +34,7 @@ And now pretty print the record results.
 
 `>>> pp(result.records)`
 
-You can also find out how many records were found matching that criteria with _result.result_count_.
+You can also find out how many records were found matching that criteria with a result_count.
 ```
 >>> print result.result_count
 6323
@@ -48,7 +48,7 @@ Sometimes you only want to see certain fields in your result. Feed a list of fie
 ```
 
 #### Pagination
-You can also so more or fewer results using the _per_page_ parameter (maximum value of 100) and paginate through with the _page_ paramater.
+See more or fewer results using the per_page parameter (maximum value of 100) and paginate through with the page paramater.
 
 ```
 >>> result = dnz.search('kiwi tui', per_page=50, page=10, fields=['id', 'title', 'collection', 'content_partner'])

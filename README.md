@@ -28,7 +28,7 @@ Now, create your first search. Let's look for items that mention kiwis and tuis.
 
 Matching records returned are in _result.records_ as a dictionary of values. Let's take a look. First import the standard pretty printer to get a sense of the response structure.
 
-`>>> import pprint.pprint as pp`
+`>>> from pprint import pprint as pp`
 
 And now pretty print the record results.
 

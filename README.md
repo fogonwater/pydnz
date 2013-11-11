@@ -43,7 +43,7 @@ You can also find out how many records were found matching that criteria with a 
 Sometimes you only want to see certain fields in your result. Feed a list of fields as an array or tuple.
 
 ```
->>> result = dnz.search('kiwi tui', fields=['id', title', 'collection', 'content_partner'])
+>>> result = dnz.search('kiwi tui', fields=['id', 'title', 'collection', 'content_partner'])
 >>> pp(result.records)
 ```
 

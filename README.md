@@ -59,7 +59,7 @@ You can scope your search to certain field values using '_and' and '_or' stateme
 
 ```
 >>> result = dnz.search(_or={'category':['Videos', 'Images']}, _and={'content_partner':['Ministry for Culture and Heritage']})
->>> pp(result.records)
+>>> pp(result.records) 
 ```
 
 #### Facets

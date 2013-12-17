@@ -1,5 +1,4 @@
 #pyDnz - A Python client for the v3 DigitalNZ API
-##### under active development...
 
 [DigitalNZ](http://digitalnz.org/) aims to make New Zealand digital content more useful. DigitalNZ provides an API to help developerrs people find digital material from libraries, museums, government departments, publicly funded organisations, the private sector, and community groups. This python library is a wrapper around that API, making it easier to interact with.
 
@@ -55,6 +54,14 @@ See more or fewer results using the per_page parameter (maximum value of 100) an
 >>> pp(result.records)
 ```
 
+#### AND / OR scoping
+You can scope your search to certain field values using '_and' and '_or' statements. Supply a dictionary where the values your fields of interest and the values are a list of attributes to limit by.
+
+```
+>>> result = dnz.search(_or={'category':['Videos', 'Images']}, _and={'content_partner':['Ministry for Culture and Heritage']})
+>>> pp(result.records)
+```
+
 #### Facets
 Get back a list of the most common terms within a field for this set of results as _result.facets_. See the [DigitalNZ API v3 docs](http://digitalnz.org/developers/api-docs-v3/search-records-api-v3) for more info.
 
@@ -81,7 +88,7 @@ pp(result.records)
 ## Limitations
 Early days. Still a fair few rough edges.
 * No test coverage.
-* Does not support _and[field]_, _or[field]_, _without[field]_ searches... yet.
+* Does not support _without[field]_ searches... yet.
 * Geographic search.
 * Oh, you know... all that other stuff.
 

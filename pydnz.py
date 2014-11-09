@@ -3,11 +3,12 @@ from requests import get
 from requests.compat import urlencode
 
 class Dnz():
-    def __init__(self,api_key=None):
+    def __init__(self,api_key=None, quiet=True):
         if api_key:
             self.api_key = api_key
         else:
             raise ValueError('DigitalNZ API requires an api key.')
+        self.quiet=quiet
 
     def search(self, q=None, **kwargs):
         # Builds and performs an item search.
@@ -17,14 +18,16 @@ class Dnz():
             kwargs['query'] = q
 
         kwargs['key'] = self.api_key
+        kwargs['quiet'] = self.quiet
         request = Request(**kwargs)
         return Results(get(request.url).json(), request)
 
+
 class Request():
     def __init__(self, query=None, fields=None, facets=None, sort=None, direction=None, 
-                 per_page=None, page=None, facets_per_page=None,
+                 per_page=None, page=None, facets_per_page=None, geo_bbox=None,
                  _and=None, _or=None, _without=None,
-                 key='', wild=None):
+                 key='', wild=None, quiet=True):
         ''' 
         Build individual url fragments for different search criteria
         TODO - write help text.
@@ -46,6 +49,11 @@ class Request():
             url_parts.append(self._singleValueFormatter('per_page',per_page))
         if facets_per_page or facets_per_page==0:
             url_parts.append(self._singleValueFormatter('facets_per_page',facets_per_page))
+        if geo_bbox:
+            if not len(geo_bbox) == 4:
+                raise ValueError("geo_bbox should have exactly 4 values. e.g. [-41,174,-42,175]")
+            geo_bbox = [str(val) for val in geo_bbox]
+            url_parts.append(self._multiValueFormatter('geo_bbox',geo_bbox))
         if page:
             url_parts.append(self._singleValueFormatter('page',page))
         if _and:
@@ -58,7 +66,8 @@ class Request():
             url_parts.append(wild)
         # Now combine all the chunks together
         self.url = self._buildUrl(url_parts)
-        print 'Requesting:', self.url
+        if not quiet:
+            print 'Requesting:', self.url
 
 
     def _buildUrl(self, url_parts=None):

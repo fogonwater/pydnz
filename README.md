@@ -1,6 +1,6 @@
 #pyDnz - A Python client for the v3 DigitalNZ API
 
-[DigitalNZ](http://digitalnz.org/) aims to make New Zealand digital content more useful. DigitalNZ provides an API to help developerrs people find digital material from libraries, museums, government departments, publicly funded organisations, the private sector, and community groups. This python library is a wrapper around that API, making it easier to interact with.
+[DigitalNZ](http://digitalnz.org/) aims to make New Zealand digital content more useful. DigitalNZ provides an API to help developers people find digital material from libraries, museums, government departments, publicly funded organisations, the private sector, and community groups. This python library is a wrapper around that API, making it easier to interact with.
 
 pyDNZ is based on [DPyLA](https://github.com/bibliotechy/DPyLA) - A Python client for the [The DPLA](http://dp.la) (Digital Public Library of America).
 
@@ -52,6 +52,15 @@ See more or fewer results using the per_page parameter (maximum value of 100) an
 ```
 >>> result = dnz.search('kiwi tui', per_page=50, page=10, fields=['id', 'title', 'collection', 'content_partner'])
 >>> pp(result.records)
+```
+
+#### Geo-search
+Search for results within a specific [North, West, South, East] bounding box.
+```
+>>> r1 = dnz.search('kiwi')
+>>> print(r1.result_count)
+>>> r2 = dnz.search('kiwi', geo_bbox=[-41,174,-42,175])
+>>> print(r2.result_count)
 ```
 
 #### AND / OR scoping

@@ -45,14 +45,12 @@ class Request():
             url_parts.append(self._singleValueFormatter('sort', sort))
         if direction:
             url_parts.append(self._singleValueFormatter('direction', direction))
-        if per_page or per_page==0:
+        if per_page or per_page==1:
             url_parts.append(self._singleValueFormatter('per_page',per_page))
         if facets_per_page or facets_per_page==0:
             url_parts.append(self._singleValueFormatter('facets_per_page',facets_per_page))
         if geo_bbox:
-            if not len(geo_bbox) == 4:
-                raise ValueError("geo_bbox should have exactly 4 values. e.g. [-41,174,-42,175]")
-            geo_bbox = [str(val) for val in geo_bbox]
+            geo_bbox = self._handleGeoBox(geo_bbox)
             url_parts.append(self._multiValueFormatter('geo_bbox',geo_bbox))
         if page:
             url_parts.append(self._singleValueFormatter('page',page))
@@ -69,7 +67,6 @@ class Request():
         if not quiet:
             print 'Requesting:', self.url
 
-
     def _buildUrl(self, url_parts=None):
         url = [
             self.base_url,
@@ -79,6 +76,19 @@ class Request():
             self.api_key
         ]
         return ''.join(url)
+
+    def _handleGeoBox(self, geo_bbox):
+        if not len(geo_bbox) == 4:
+            raise ValueError("geo_bbox should have exactly 4 values. e.g. [-41,174,-42,175]")
+            return ''
+        geo_bbox = [
+            max(geo_bbox[0], geo_bbox[2]),
+            min(geo_bbox[1], geo_bbox[3]),
+            min(geo_bbox[0], geo_bbox[2]),
+            max(geo_bbox[1], geo_bbox[3]),
+        ]
+        geo_bbox = [str(val) for val in geo_bbox]
+        return geo_bbox
 
     def _singleValueFormatter(self, param_name, value):
         # Creates an encoded URL fragment for parameters that contain only a single value

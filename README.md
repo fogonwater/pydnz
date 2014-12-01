@@ -1,4 +1,4 @@
-#pyDnz - A Python client for the v3 DigitalNZ API
+#pyDnz - A Python client for the DigitalNZ API
 
 [DigitalNZ](http://digitalnz.org/) aims to make New Zealand digital content more useful. DigitalNZ provides an API to help developers people find digital material from libraries, museums, government departments, publicly funded organisations, the private sector, and community groups. This python library is a wrapper around that API, making it easier to interact with.
 
@@ -98,7 +98,6 @@ pp(result.records)
 Early days. Still a fair few rough edges.
 * No test coverage.
 * Does not support _without[field]_ searches... yet.
-* Geographic search.
 * Oh, you know... all that other stuff.
 
 ##License

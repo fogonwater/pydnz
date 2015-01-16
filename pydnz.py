@@ -123,4 +123,4 @@ class Results():
         self.request = request
         self.result_count = response['search']['result_count']
         self.records= [result for result in response['search']['results']]
-        self.facets=[{k:v} for k,v in  response['search']['facets'].iteritems()]
+        self.facets= response['search']['facets']

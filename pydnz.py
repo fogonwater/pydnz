@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import json
 from requests import get
 from requests.compat import urlencode
@@ -25,7 +27,7 @@ class Dnz():
 
 class Request():
     def __init__(self, query=None, fields=None, facets=None, sort=None, direction=None, 
-                 per_page=None, page=None, facets_per_page=None, geo_bbox=None,
+                 per_page=None, page=None, facets_page=None, facets_per_page=None, geo_bbox=None,
                  _and=None, _or=None, _without=None,
                  key='', wild=None, quiet=True):
         ''' 
@@ -47,6 +49,8 @@ class Request():
             url_parts.append(self._singleValueFormatter('direction', direction))
         if per_page or per_page==1:
             url_parts.append(self._singleValueFormatter('per_page',per_page))
+        if facets_page or facets_page==0:
+            url_parts.append(self._singleValueFormatter('facets_page',facets_page))
         if facets_per_page or facets_per_page==0:
             url_parts.append(self._singleValueFormatter('facets_per_page',facets_per_page))
         if geo_bbox:
@@ -109,6 +113,7 @@ class Request():
             if isinstance(values[k], basestring):
                 raise ValueError("Multi-value parameters should not be strings.")
             for value in values[k]:
+                value = value.encode('utf-8')
                 url_parts.append( urlencode(({param_scoped_name: value})) )
         return '&'.join(url_parts)
 

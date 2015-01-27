@@ -75,15 +75,24 @@ You can scope your search to certain field values using '_and' and '_or' stateme
 Get back a list of the most common terms within a field for this set of results as _result.facets_. See the [DigitalNZ API v3 docs](http://digitalnz.org/developers/api-docs-v3/search-records-api-v3) for more info.
 
 ```
->>> result = dnz.search('kiwi tui', per_page=0, facets=['year', 'collection'])
+>>> result = dnz.search('kiwi tui', facets=['year', 'collection'])
 >>> pp(result.facets)
 ```
 
 You can also increase the number of facets returned (up to a maximum of 150) with the _facets_per_page_ parameter.
 
 ```
->>> result = dnz.search('kiwi tui', per_page=0, facets=['year', 'collection'], facets_per_page=30)
+>>> result = dnz.search('kiwi tui', facets=['year', 'collection'], facets_per_page=30)
 >>> pp(result.facets)
+```
+
+Iterate through facet results with the facets_page parameter.
+
+```
+>>> r1 = dnz.search('kiwi tui', facets=['year', 'collection'], facets_page=1)
+>>> r2 = dnz.search('kiwi tui', facets=['year', 'collection'], facets_page=2)
+>>> pp(r1.facets)
+>>> pp(r2.facets)
 ```
 
 #### Sort

@@ -11,11 +11,11 @@ Depends on the [Requests package](http://www.python-requests.org/en/latest/).
 
 ####Getting started
 
-There is no installer for this script yet. In the meantime, simply drop the _pydnz.py_ script into a directory with your project. 
+`sudo python setup.py install`
 
 Start a python interpreter and type:
 
-`>>> from pydnz import Dnz`
+`>>> from dnz.api import Dnz`
 
 Then create the dnz object with your [DigitalNZ API key](http://digitalnz.org/api_keys).
 

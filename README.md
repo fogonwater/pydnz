@@ -4,7 +4,7 @@
 
 pyDNZ is based on [DPyLA](https://github.com/bibliotechy/DPyLA) - A Python client for the [The DPLA](http://dp.la) (Digital Public Library of America).
 
-Tested and working with Python 2.7. See the [DigitalNZ API v3 docs](http://digitalnz.org/developers/api-docs-v3/search-records-api-v3) for more information about the API.
+Should work in Python 2.6+ and Python 3. See the [DigitalNZ API v3 docs](http://digitalnz.org/developers/api-docs-v3/search-records-api-v3) for more information about the API.
 
 ### Dependencies
 Depends on the [Requests package](http://www.python-requests.org/en/latest/).

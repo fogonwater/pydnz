@@ -105,7 +105,6 @@ pp(result.records)
 
 ## Limitations
 Early days. Still a fair few rough edges.
-* No test coverage.
 * Does not support _without[field]_ searches... yet.
 * Oh, you know... all that other stuff.
 

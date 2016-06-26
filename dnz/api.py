@@ -1,6 +1,7 @@
 import json
 from requests import get
 from requests.compat import urlencode
+from six import string_types
 
 
 class Dnz():
@@ -113,7 +114,7 @@ class Request():
 
     def _multiValueFormatter(self, param_name, values):
         """Create an encoded URL fragment for parameters that may contain multiple values."""
-        if isinstance(values, basestring):
+        if isinstance(values, string_types):
             raise ValueError("Multi-value parameters should not be strings.")
         return urlencode({param_name: ','.join(values)})
 
@@ -123,7 +124,7 @@ class Request():
         for k in values.keys():
             param_scoped_name = '%s[%s][]' % (param_name, k)
             # check the dict values are not strings
-            if isinstance(values[k], basestring):
+            if isinstance(values[k], string_types):
                 raise ValueError("Multi-value parameters should \
                     not be strings.")
             for value in values[k]:
@@ -147,7 +148,7 @@ class Results():
 
     def __init__(self, response, request):
         """Create a Results object."""
-        print response
+        print(response)
         self.request = request
         self.result_count = 0
         self.records = []

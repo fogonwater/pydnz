@@ -1,4 +1,4 @@
-#pyDnz - A Python client for the DigitalNZ API
+# pyDnz - A Python client for the DigitalNZ API
 
 [DigitalNZ](http://digitalnz.org/) aims to make New Zealand digital content more useful. DigitalNZ provides an API to help developers people find digital material from libraries, museums, government departments, publicly funded organisations, the private sector, and community groups. This python library is a wrapper around that API, making it easier to interact with.
 
@@ -7,9 +7,10 @@ pyDNZ is based on [DPyLA](https://github.com/bibliotechy/DPyLA) - A Python clien
 Should work in Python 2.6+ and Python 3. See the [DigitalNZ API v3 docs](http://digitalnz.org/developers/api-docs-v3/search-records-api-v3) for more information about the API.
 
 ### Dependencies
+
 Depends on the [Requests package](http://www.python-requests.org/en/latest/).
 
-####Getting started
+#### Getting started
 
 `sudo python setup.py install`
 
@@ -47,6 +48,7 @@ Sometimes you only want to see certain fields in your result. Feed a list of fie
 ```
 
 #### Pagination
+
 See more or fewer results using the per_page parameter (maximum value of 100) and paginate through with the page paramater.
 
 ```
@@ -55,6 +57,7 @@ See more or fewer results using the per_page parameter (maximum value of 100) an
 ```
 
 #### Geo-search
+
 Search for results within a specific [North, West, South, East] bounding box.
 ```
 >>> r1 = dnz.search('kiwi')
@@ -64,6 +67,7 @@ Search for results within a specific [North, West, South, East] bounding box.
 ```
 
 #### AND / OR scoping
+
 You can scope your search to certain field values using '_and' and '_or' statements. Supply a dictionary where the values your fields of interest and the values are a list of attributes to limit by.
 
 ```
@@ -72,6 +76,7 @@ You can scope your search to certain field values using '_and' and '_or' stateme
 ```
 
 #### Facets
+
 Get back a list of the most common terms within a field for this set of results as _result.facets_. See the [DigitalNZ API v3 docs](http://digitalnz.org/developers/api-docs-v3/search-records-api-v3) for more info.
 
 ```
@@ -96,6 +101,7 @@ Iterate through facet results with the facets_page parameter.
 ```
 
 #### Sort
+
 Pass a sortable field along with the _sort_ field and a _direction_ to order the result set. Sortable fields are 'category', 'content_partner', 'date', 'syndication_date', 'title'. Directions can be 'asc' or 'desc'.
 
 ```
@@ -104,11 +110,12 @@ pp(result.records)
 ```
 
 ## Limitations
+
 Early days. Still a fair few rough edges.
 * Does not support _without[field]_ searches... yet.
 * Oh, you know... all that other stuff.
 
-##License
+## License
 
 GPLV2. 
 See [license.txt](license.txt)

@@ -148,7 +148,6 @@ class Results():
 
     def __init__(self, response, request):
         """Create a Results object."""
-        print(response)
         self.request = request
         self.result_count = 0
         self.records = []
